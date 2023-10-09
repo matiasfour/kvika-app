@@ -1,0 +1,33 @@
+name: QA Build and Review
+on: [pull_request]
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  publish:
+    name: Install and publish
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: yarn install
+      - run: eas update --branch pr-${{ github.event.number }} --message 'Update with commit ${{ github.sha }}' --non-interactive
+      - name: 💬 Comment preview
+        uses: expo/expo-github-action/preview-comment@v7
+        with:
+          message: '<h2>App is ready for review</h2><h3>Scan the QR code to to test the app</h3><a href="exp+kvika-expo-app://expo-development-client/?url=https://u.expo.dev/0cb98e0a-6131-427e-87a6-d51c226dc84b%3Fchannel-name%3Dpr-${{ github.event.number }}"><img src="https://qr.expo.dev/development-client?appScheme=exp%2Bkvika-expo-app&url=https://u.expo.dev/0cb98e0a-6131-427e-87a6-d51c226dc84b%3Fchannel-name%3Dpr-${{ github.event.number }}" height="200px" width="200px"></a>'
+          message-id: preview

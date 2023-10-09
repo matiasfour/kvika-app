@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "716908595139",
+    "project_id": "kvika-app",
+    "storage_bucket": "kvika-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716908595139:android:2913b284597f3be3ff5f76",
+        "android_client_info": {
+          "package_name": "com.kvika.kvikaApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716908595139-1bgbpol8o36v1t8l7hq5ke59g7hjaktj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQc5qd059fibtWFUWlyDcXg8ozGXQWhwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716908595139-1bgbpol8o36v1t8l7hq5ke59g7hjaktj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

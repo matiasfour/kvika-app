@@ -1,0 +1,34 @@
+name: 'Build & run tests'
+on: [pull_request]
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  eslint:
+    name: Compile typescript, lint, prettier and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies (yarn)
+        run: yarn install
+
+      - name: Build the project (tsc)
+        run: yarn tsc
+
+      - name: Prettier check
+        run: yarn prettier:check
+
+      - name: Lint check
+        run: yarn lint
+
+      - name: Run tests
+        run: yarn test

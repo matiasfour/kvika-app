@@ -1,0 +1,28 @@
+changelog:
+  categories:
+    - title: "Features 🚀"
+      labels:
+        - feature
+        - improvement
+
+    - title: "Maintenance 🧰"
+      labels:
+        - bug
+        - chore
+        - sync
+
+    - title: "Dependencies 🤖"
+      labels:
+        - dependencies
+
+    - title: "Documentation 📚"
+      labels:
+        - docs
+
+    - title: "Other Changes"
+      labels:
+        - "*"
+
+  exclude:
+    labels:
+      - release

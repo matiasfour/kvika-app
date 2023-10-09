@@ -1,0 +1,25 @@
+name: 'Publish release notes'
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    env:
+      KVIKA_RELEASE_TOKEN: ${{ secrets.KVIKA_RELEASE_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Authenticate with GitHub package registry
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - name: Install dependencies
+        run: yarn
+      - name: Publish release
+        run: yarn release publish

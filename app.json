@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "kvika-app",
+    "slug": "kvika-expo-app",
+    "owner": "gislitg",
+    "version": "1.0.2",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "dark",
+    "jsEngine": "hermes",
+    "extra": {
+      "eas": {
+        "projectId": "0cb98e0a-6131-427e-87a6-d51c226dc84b"
+      }
+    },
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0D0D0D"
+    },
+    "backgroundColor": "#0D0D0D",
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/0cb98e0a-6131-427e-87a6-d51c226dc84b"
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": false,
+      "buildNumber": "12",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Hægt er að nota Face ID til að skrá sig inn í Kviku appið"
+      }
+    },
+    "android": {
+      "versionCode": 12,
+      "permissions": ["USE_BIOMETRIC", "USE_FINGERPRINT", "com.google.android.gms.permission.AD_ID"],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#0D0D0D"
+      },
+      "googleServicesFile": "./assets/google-services.json"
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": ["sentry-expo", "expo-community-flipper"]
+  }
+}

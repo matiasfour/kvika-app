@@ -1,0 +1,31 @@
+name: Publish to Expo Production
+on:
+  push:
+    branches:
+      - main
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  publish:
+    name: Install and publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: yarn install
+      # NOTE: Change this channel in line with the eas.json production profile
+      - run: eas update --branch prod-v2 --message 'Update with commit ${{ github.sha }}' --non-interactive

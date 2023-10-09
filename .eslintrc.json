@@ -1,0 +1,36 @@
+{
+  "extends": ["@kvika/eslint-config"],
+  "plugins": ["react-native"],
+  "rules": {
+    "no-underscore-dangle": 0,
+    "camelcase": 0,
+    "no-unused-expressions": ["error", { "allowTernary": true, "allowShortCircuit": true }],
+    "react/style-prop-object": [
+      "error",
+      {
+        "allow": ["StatusBar", "Paint", "Path", "TransitioningPath", "Line"]
+      }
+    ],
+    "global-require": "off",
+    "class-methods-use-this": ["error", { "exceptMethods": ["storeAuthToken"] }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "ignorePatterns": ["*.config.js"],
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      }
+    }
+  ]
+}
